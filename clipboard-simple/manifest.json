@@ -1,0 +1,14 @@
+{
+  "name" : "Clipboard - Simple Example",
+  "version" : "1.0.0",
+  "description" : "Tests the experimental clipboard API",
+  "background_page" : "background.html",
+  "permissions" : [ "experimental", "tabs" ],
+  "browser_action" : {
+    "default_icon" : "sample-128.png",
+    "popup" : "popup.html"
+  },
+  "icons" : {
+    "128" : "sample-128.png"
+  }
+}

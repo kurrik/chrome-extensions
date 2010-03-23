@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+  <head>
+    <style>
+      button {
+        font-size: 200%;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      /**
+       * See http://crbug.com/32363 for context.
+       * Run with 
+       *   --enable-experimental-extension-apis    
+       */
+      function copy() {
+        chrome.tabs.getSelected(null, function(tab) {
+          chrome.experimental.clipboard.executeCopy(tab.id, function () {});
+        });
+      };
+      
+      function paste() {
+        chrome.tabs.getSelected(null, function(tab) {
+          chrome.experimental.clipboard.executePaste(tab.id, function () {});
+        });
+      };
+    </script>
+    <button onclick="copy();">Copy</button
+    <button onclick="paste();">Paste</button>
+  </body>
+</html>
