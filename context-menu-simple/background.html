@@ -9,6 +9,11 @@
   </head>
   <body>
     <script>
+      /**
+       * Needs Chromium r42321 or higher.
+       * Run with 
+       *   --enable-experimental-extension-apis    
+       */
       function onMenuClick(info, tab) {
         alert('You clicked on a context menu');
       };
@@ -19,7 +24,7 @@
         "contexts" : ["ALL"],
         "enabledContexts" : ["LINK"],
         "onclick" : onMenuClick
-      })
+      });
     </script>
   </body>
 </html>
