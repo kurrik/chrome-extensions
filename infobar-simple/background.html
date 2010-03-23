@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      /**
+       * See http://crbug.com/32363 for context.
+       * Run with 
+       *   --enable-experimental-extension-apis    
+       */
+      chrome.browserAction.onClicked.addListener(function (tab) {
+        chrome.experimental.infobars.show({ "htmlPath" : "infobar.html" }, function(){});
+      });
+    </script>
+  </body>
+</html>
