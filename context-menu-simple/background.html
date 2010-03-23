@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      function onMenuClick(info, tab) {
+        alert('You clicked on a context menu');
+      };
+      
+      chrome.experimental.contextMenu.create({
+        "title" : "I am a context menu item active on links",
+        "type" : "NORMAL",
+        "contexts" : ["ALL"],
+        "enabledContexts" : ["LINK"],
+        "onclick" : onMenuClick
+      })
+    </script>
+  </body>
+</html>

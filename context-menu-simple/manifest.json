@@ -1,0 +1,7 @@
+{
+  "name" : "Context Menu - Simple Example",
+  "version" : "1.0.0",
+  "description" : "Tests the experimental context menu API",
+  "background_page" : "background.html",
+  "permissions" : [ "experimental" ]
+}
