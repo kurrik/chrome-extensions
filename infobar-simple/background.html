@@ -15,7 +15,7 @@
        *   --enable-experimental-extension-apis    
        */
       chrome.browserAction.onClicked.addListener(function (tab) {
-        chrome.experimental.infobars.show({ "htmlPath" : "infobar.html" }, function(){});
+        chrome.experimental.infobars.show({ "path" : "infobar.html" });
       });
     </script>
   </body>
