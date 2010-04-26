@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+  <head>
+    <style>
+      body {
+        width: 400px;
+        font: 13px Arial;
+        color: #000;
+      }
+      dt {
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <dl>
+      <dt>Extension name:</dt>
+      <dd id="dd_name"></dd>
+      <dt>Extension version:</dt>
+      <dd id="dd_vers"></dd>
+      <dt>Extension description:</dt>
+      <dd id="dd_desc"></dd>
+    </dl>
+    <script>
+      var background = chrome.extension.getBackgroundPage();
+      var manifest = background.getManifest();
+      document.getElementById('dd_name').innerText = manifest['name'];
+      document.getElementById('dd_vers').innerText = manifest['version'];
+      document.getElementById('dd_desc').innerText = manifest['description'];
+    </script>
+  </body>
+</html>

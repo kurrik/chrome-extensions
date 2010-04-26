@@ -1,0 +1,17 @@
+{
+  "name": "SAMPLE - Read extension manifest programmatically",
+  "version": "3.4.5",
+  "description": "Reads the manifest file from the background page and displays information about this extension.",
+  "permissions": [
+  ],
+  "icons": {
+    "48" : "sample-48.png",
+    "128" : "sample-128.png"
+  },
+  "background_page" : "background.html",
+  "browser_action":
+  {
+    "default_popup" : "popup.html",
+    "default_icon" : "sample-19.png"
+  }
+}

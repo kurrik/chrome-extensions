@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      var manifest = null;
+
+      /**
+       * Used by the popup to access the manifest data.
+       */
+      function getManifest() {
+        return manifest;
+      };
+
+      /**
+       * Fetches the manifest via XHR and parses the JSON.
+       */
+      function fetchManifest() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(data) {
+          if (xhr.readyState == 4) {
+            manifest = JSON.parse(xhr.responseText);
+            console.log(manifest);
+          }
+        }
+        // Use a synchronous request because the fetch is fast
+        xhr.open('GET', 'manifest.json', false);
+        xhr.send();
+      };
+
+      fetchManifest();
+    </script>
+  </body>
+</html>
