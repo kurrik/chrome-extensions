@@ -1,0 +1,15 @@
+{
+  "name": "SAMPLE - Use relative paths in a content script CSS file",
+  "version": "1.0.0",
+  "description": "Shows how to use extension images in content script CSS.",
+  "icons": {
+    "48" : "sample-48.png",
+    "128" : "sample-128.png"
+  },
+  "content_scripts" : [
+    {
+      "matches" : ["http://www.google.com/*"],
+      "css" : ["backgroundimage.css"]
+    }
+  ]
+}

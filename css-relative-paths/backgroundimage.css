@@ -1,0 +1,6 @@
+body {
+  background: url('chrome-extension://__MSG_@@extension_id__/sample-128.png') repeat !important;
+  /* Note: Works if you use
+   * background: url('chrome-extension://ajfndamiefkhbkfehhebhfejlobkogpe/sample-128.png') repeat !important; 
+   */
+}
