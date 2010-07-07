@@ -1,0 +1,11 @@
+{
+  "name": "SAMPLE - Use a favicon in the options page.",
+  "version": "1.0.0",
+  "description": "Shows how to set a favicon in the options page.",
+  "icons": {
+    "16" : "sample-16.png",
+    "48" : "sample-48.png",
+    "128" : "sample-128.png"
+  },
+  "options_page" : "options.html"
+}
