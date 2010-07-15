@@ -1,0 +1,21 @@
+{
+  "name": "OAuth issue tracker access",
+  "version": "1.0.0",
+  "description": "Access Google issue trackers using OAuth.",
+  "permissions": [
+    "tabs",
+    "https://www.google.com/accounts/OAuthGetRequestToken",
+    "https://www.google.com/accounts/OAuthAuthorizeToken",
+    "https://www.google.com/accounts/OAuthGetAccessToken"
+  ],
+  "icons": {
+    "48" : "sample-48.png",
+    "128" : "sample-128.png"
+  },
+  "background_page" : "background.html",
+  "browser_action":
+  {
+    "default_popup" : "popup.html",
+    "default_icon" : "sample-19.png"
+  }
+}

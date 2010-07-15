@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="chrome_ex_oauthsimple.js"></script>
+    <script type="text/javascript" src="chrome_ex_oauth.js"></script>
+  </head>
+  <body>
+    <script>
+      var oauth = ChromeExOAuth.initBackgroundPage({
+        'request_url': 'https://www.google.com/accounts/OAuthGetRequestToken',
+        'authorize_url': 'https://www.google.com/accounts/OAuthAuthorizeToken',
+        'access_url': 'https://www.google.com/accounts/OAuthGetAccessToken',
+        'consumer_key': 'anonymous',
+        'consumer_secret': 'anonymous',
+        'scope': 'http://code.google.com/feeds/issues',
+        'app_name': 'OAuth issue tracker extension'
+      });
+
+      function callback(resp, xhr) {
+        console.log(resp);
+      };
+
+      function onAuthorized() {
+        var url = 'http://code.google.com/feeds/issues/p/chromium/issues/full';
+        var request = {
+          'method': 'GET',
+          'parameters': {'alt': 'json'}
+        };
+        oauth.sendSignedRequest(url, callback, request);
+      };
+
+      oauth.authorize(onAuthorized);
+    </script>
+  </body>
+</html>
