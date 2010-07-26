@@ -1,0 +1,28 @@
+{
+  "name" : "Add template data to calendar descriptions",
+  "version" : "1.0.0",
+  "description" : "Adds template data to calendar descriptions",
+  "background_page" : "background.html",
+  "permissions" : [ 
+    "tabs",
+    "http://www.google.com/calendar/*",
+    "https://www.google.com/calendar/*"
+  ],
+  "page_action" : {
+    "default_icon" : "sample-19.png"
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://www.google.com/calendar/*",
+        "https://www.google.com/calendar/*"
+      ],
+      "js" : ["contentscript.js"],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ],
+  "icons" : {
+    "128" : "sample-128.png"
+  }
+}
