@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+  <head>
+    <script src="imageinfo/binaryajax.js"></script>
+    <script src="imageinfo/imageinfo.js" ></script>
+    <script src="imageinfo/exif.js" ></script>
+  </head>
+  <body>
+    <script>
+      function getClickHandler() {
+        return function(info, tab) {
+          console.log('info', info);
+          var url = info.srcUrl;
+
+          ImageInfo.loadInfo(url, function() {
+            var imageinfo = ImageInfo.getAllFields(url);
+            console.log('imageinfo', imageinfo);
+            alert(JSON.stringify(imageinfo));
+          })
+        };
+      };
+      
+      chrome.contextMenus.create({
+        "title" : "Get image info",
+        "type" : "normal",
+        "contexts" : ["image"],
+        "onclick" : getClickHandler()
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name" : "Context Menu - Get image info",
+  "version" : "1.0.0",
+  "description" : "Get image info for images, including exif data",
+  "background_page" : "background.html",
+  "permissions" : [ "contextMenus", "tabs", "http://*/*" ],
+  "minimum_chrome_version" : "6.0.0.0"
+}
