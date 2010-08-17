@@ -21,15 +21,17 @@
       }
     </style>
     <script>
-      function onSelection(text) {
-        console.log('Got selection: ' + text);
-        document.getElementById("output").value = text;
+      function onSelection(payload) {
+        console.log('Got selection: ' + payload);
+        document.getElementById("output-text").value = payload.text;
+        document.getElementById("output-html").value = payload.html;
         chrome.extension.onRequest.removeListener(window.onSelection);
       };
     </script>
   </head> 
   <body> 
-    <textarea id="output">This should be replaced with the selected text</textarea> 
+    <textarea id="output-text">This should be replaced with the selected text</textarea> 
+    <textarea id="output-html">This should be replaced with the HTML of the common ancestor of the selected text</textarea> 
     <script type="text/javascript"> 
       chrome.extension.onRequest.addListener(onSelection);
       chrome.tabs.executeScript(null, { file: "contentscript.js" }); 

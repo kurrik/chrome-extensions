@@ -3,4 +3,14 @@
  * source code is governed by a BSD-style license that can be found in the
  * LICENSE file.
  */
-chrome.extension.sendRequest(window.getSelection().toString()); 
+var selection = window.getSelection();
+// Only works with a single range 
+var range = selection.getRangeAt(0);
+var container = range.commonAncestorContainer;
+
+var payload = {
+  'text': selection.toString(),
+  'html': container.innerHTML
+};
+
+chrome.extension.sendRequest(payload); 
