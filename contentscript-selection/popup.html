@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html> 
+  <head> 
+    <style>
+      body {
+        width: 400px;
+      }
+      textarea {
+        width: 380px;
+        min-height: 200px;
+        margin: 0 auto;
+        background: #eee;
+        border: 0; 
+        padding: 10px;
+        font: 13px monospace;
+      }
+    </style>
+    <script>
+      function onSelection(text) {
+        console.log('Got selection: ' + text);
+        document.getElementById("output").value = text;
+        chrome.extension.onRequest.removeListener(window.onSelection);
+      };
+    </script>
+  </head> 
+  <body> 
+    <textarea id="output">This should be replaced with the selected text</textarea> 
+    <script type="text/javascript"> 
+      chrome.extension.onRequest.addListener(onSelection);
+      chrome.tabs.executeScript(null, { file: "contentscript.js" }); 
+    </script>
+  </body> 
+</html>

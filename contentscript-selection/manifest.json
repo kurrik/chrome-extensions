@@ -1,0 +1,14 @@
+{
+  "name": "Content Script - Get selection",
+  "version": "1.0.0",
+  "description": "Gets the selected text from the current page.",
+  "browser_action": {
+    "default_title": "",
+    "default_icon": "sample-19.png",
+    "popup" : "popup.html"    
+  },
+  "permissions": [
+    "tabs",
+    "http://*/*"
+  ]
+}
