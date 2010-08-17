@@ -17,6 +17,7 @@
           console.log('info', info);
           var url = info.srcUrl;
 
+          // Library from http://blog.nihilogic.dk/2008/08/imageinfo-reading-image-metadata-with.html
           ImageInfo.loadInfo(url, function() {
             var imageinfo = ImageInfo.getAllFields(url);
             console.log('imageinfo', imageinfo);
