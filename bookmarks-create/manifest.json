@@ -1,0 +1,13 @@
+{
+  "name": "Bookmarks - Create",
+  "version": "1.0.0",
+  "description": "Create a bookmark.",
+  "permissions": [
+    "bookmarks",
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon" : "sample-19.png",
+    "default_popup": "popup.html"
+  }
+}

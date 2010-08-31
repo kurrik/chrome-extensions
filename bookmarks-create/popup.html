@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+  <head>
+    <style>
+      body {
+        width: 400px;
+        text-align: center;
+        font: 13px Arial;
+      }
+      #output {
+        color: #0d0;
+      }
+      button {
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="output"></div>
+    <button>Add a bookmark for the current page</button>
+    <script>
+      function makeBookmark() {
+        chrome.tabs.getSelected(null, function(tab) {
+          chrome.bookmarks.getTree(function(bookmarks) {
+            chrome.bookmarks.create({
+              'parentId': bookmarks[0].children[0].id,
+              'url': tab.url,
+              'title': 'Bookmark: ' + tab.title
+            }, function() {
+              document.querySelector('#output').innerText = 
+                  'Created bookmark for ' + tab.url;
+            });
+          });
+        });
+      };
+      document.querySelector('button').addEventListener('click', makeBookmark);
+    </script>
+  </body>
+</html>
