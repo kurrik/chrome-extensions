@@ -7,3 +7,4 @@
 // Colors the background of https pages red.  You can test at 
 // https://www.google.com/
 document.body.style.background = '#f00';
+alert("You're on an HTTPS page!");
