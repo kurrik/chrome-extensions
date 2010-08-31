@@ -1,0 +1,15 @@
+{
+  "name": "Content Script - HTTPS",
+  "version": "1.0.0",
+  "description": "Works on HTTPS pages.",
+  "content_scripts" : [
+    {
+      "matches" : [
+        "https://*/*"
+      ],
+      "js" : ["contentscript.js"],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ]
+}
