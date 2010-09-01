@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html> 
+  <head> 
+    <style>
+      body {
+        width: 400px;
+      }
+    </style>
+    <script>
+      function onID(idString) {
+        console.log('Got ID: ' + idString);
+        document.getElementById("output-text").innerText = idString;
+        chrome.extension.onRequest.removeListener(window.onID);
+      };
+    </script>
+  </head> 
+  <body> 
+    <div id="output-text">This should be replaced with the jQuery version</div> 
+    <script type="text/javascript"> 
+      chrome.extension.onRequest.addListener(onID);
+      chrome.tabs.executeScript(null, { file: "contentscript.js" }); 
+    </script>
+  </body> 
+</html>

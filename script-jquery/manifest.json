@@ -1,0 +1,14 @@
+{
+  "name": "Script - Get jQuery version data",
+  "version": "1.0.0",
+  "description": "Gets the version of jQuery loaded on the page if available.",
+  "browser_action": {
+    "default_title": "",
+    "default_icon": "sample-19.png",
+    "popup" : "popup.html"    
+  },
+  "permissions": [
+    "tabs",
+    "http://*/*"
+  ]
+}
