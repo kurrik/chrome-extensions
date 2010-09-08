@@ -1,0 +1,19 @@
+{
+  "name": "SAMPLE - Detect whether a contentscript is running in a frame.",
+  "version": "1.0.0",
+  "description": "Alerts if a contentscript is displayed in a frame.",
+  "permissions": [
+  ],
+  "icons": {
+    "48" : "sample-48.png",
+    "128" : "sample-128.png"
+  },
+  "content_scripts" : [
+    {
+      "matches" : ["http://*/*", "https://*/*", "file:///*/*],
+      "js" : ["contentscript.js"],
+      "run_at" : "document_idle",
+      "all_frames" : true
+    }
+  ]
+}
