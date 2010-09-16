@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+        if (changeInfo.url) {
+          alert('onUpdated: ' + changeInfo.url);
+        }
+      });
+    </script>
+  </body>
+</html>

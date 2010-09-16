@@ -1,0 +1,11 @@
+{
+  "name": "Test tabs onUpdated",
+  "version": "1.1.8",
+  "icons": { "48": "sample-48.png",
+            "128": "sample-128.png" },
+  "description": "Alerts if a tab is updated.",
+  "background_page": "background.html",
+  "permissions": [
+    "tabs"
+  ]
+}
