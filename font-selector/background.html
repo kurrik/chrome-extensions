@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      var menuId = null;
+      
+      function getMenuHandler(font) {
+        return function(data, tab) {
+          chrome.tabs.executeScript(tab.id, {code:"console.log('" + font + "', lastElem); setStyles(lastElem, {'font-family':'Georgia'});"})
+        };
+      };
+      
+      function onBrowserAction(tab) {
+        chrome.tabs.executeScript(tab.id, {file:"selectitem.js"});
+        menuId = chrome.contextMenus.create({
+          "title" : "Change font to Georgia",
+          "type" : "normal",
+          "contexts" : ["all"],
+          "onclick" : getMenuHandler("Georgia")
+        });
+      };
+      
+      chrome.browserAction.onClicked.addListener(onBrowserAction);
+    </script>
+  </body>
+</html>

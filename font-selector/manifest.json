@@ -1,0 +1,17 @@
+{
+  "name" : "Change the fonts on a page",
+  "version" : "1.0.0",
+  "description" : "Select an item and change its font",
+  "background_page" : "background.html",
+  "permissions" : [ 
+    "tabs",
+    "http://*/*",
+    "contextMenus"
+  ],
+  "browser_action" : {
+    "default_icon" : "sample-19.png"
+  },
+  "icons" : {
+    "128" : "sample-128.png"
+  }
+}
