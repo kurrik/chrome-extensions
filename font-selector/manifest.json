@@ -1,5 +1,5 @@
 {
-  "name" : "Change the fonts on a page",
+  "name" : "Font selector",
   "version" : "1.0.0",
   "description" : "Select an item and change its font",
   "background_page" : "background.html",
@@ -9,9 +9,9 @@
     "contextMenus"
   ],
   "browser_action" : {
-    "default_icon" : "sample-19.png"
+    "default_icon" : "icon-19-regular.png"
   },
   "icons" : {
-    "128" : "sample-128.png"
+    "128" : "icon-128.png"
   }
 }

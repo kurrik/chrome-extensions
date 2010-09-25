@@ -9,25 +9,87 @@
   </head>
   <body>
     <script>
-      var menuId = null;
+      var fonts = [
+        'Droid Sans', 
+        'Cuprum', 
+        'IM Fell DW Pica', 
+        'Lobster', 
+        'Molengo',
+        'Reenie Beanie',
+        'Tangerine'
+      ];
+      fonts.sort();
+      var menuitems = {};
+      var active = {};
       
       function getMenuHandler(font) {
         return function(data, tab) {
-          chrome.tabs.executeScript(tab.id, {code:"console.log('" + font + "', lastElem); setStyles(lastElem, {'font-family':'Georgia'});"})
+          chrome.tabs.executeScript(tab.id, {
+              code:"setFont(lastElem, '" + font +"');"
+          });
+
+          setActive(tab.id, false);
         };
       };
       
-      function onBrowserAction(tab) {
-        chrome.tabs.executeScript(tab.id, {file:"selectitem.js"});
-        menuId = chrome.contextMenus.create({
-          "title" : "Change font to Georgia",
-          "type" : "normal",
-          "contexts" : ["all"],
-          "onclick" : getMenuHandler("Georgia")
+      function registerFontContextMenuItem(font) {
+        if (!menuitems[font]) {
+          menuitems[font] = chrome.contextMenus.create({
+            "title" : "Change font to " + font,
+            "type" : "normal",
+            "contexts" : ["all"],
+            "onclick" : getMenuHandler(font)
+          });
+        } 
+      };
+      
+      function onBrowserActionClicked(tab) {
+        if (active[tab.id] == false) {
+          setActive(tab.id, true);
+          chrome.tabs.executeScript(tab.id, {file:"selectitem.js"});
+        }
+      };
+      
+      function setActive(tabid, val) {
+        chrome.tabs.getSelected(null, function (currenttab) {
+          active[tabid] = (typeof val == 'boolean') ? val : false;
+          var icon = active[tabid] ? 'icon-19-active.png' : 
+                                     'icon-19-regular.png';
+          if (currenttab.id == tabid) {
+            chrome.browserAction.setIcon({path:icon});
+            setMenu(active[tabid]);
+          }
         });
       };
       
-      chrome.browserAction.onClicked.addListener(onBrowserAction);
+      function setMenu(active) {
+        if (active) {
+          for (var i = 0; i < fonts.length; i++) {
+            registerFontContextMenuItem(fonts[i]);
+          }
+        } else {
+          chrome.contextMenus.removeAll();
+          menuitems = {};
+        }
+      };
+      
+      function onTabSelectionChanged(tabid) {
+        setActive(tabid, active[tabid]);
+      };
+      
+      function onTabUpdated(tabid, info) {
+        setActive(tabid, false);
+      };
+      
+      function onTabRemoved(tabid) {
+        delete active[tabid];
+      };
+      
+      
+      chrome.browserAction.onClicked.addListener(onBrowserActionClicked);
+      chrome.tabs.onUpdated.addListener(onTabUpdated);
+      chrome.tabs.onRemoved.addListener(onTabRemoved);
+      chrome.tabs.onSelectionChanged.addListener(onTabSelectionChanged);
     </script>
   </body>
 </html>

@@ -18,16 +18,52 @@ function setStyles(elem, styles) {
   }
 };
 
+function setFont(elem, font) {
+  window.removeEventListener('mousemove', onMouseMove, true);
+  resetOldStyles();
+  
+  var link = document.createElement('link');
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = "http://fonts.googleapis.com/css?family=" + 
+              encodeURIComponent(font);
+  document.head.appendChild(link);  
+  
+  var elemqueue = [elem];
+  while (elemqueue.length > 0) {
+    var e = elemqueue.shift();
+    e.style.setProperty('font-family', font);
+    for (var i=0; i < e.children.length; i++) {
+      elemqueue.push(e.children[i]);
+    }
+  }
+};
+
+function saveStyles(elem, styles) {
+  lastElem = elem;
+  lastElemStyle = getStyles(elem, styles);
+};
+
+function resetOldStyles() {
+  if (lastElem) {
+    setStyles(lastElem, lastElemStyle);
+    lastElem = null;
+    lastElemStyle = null;
+  }
+};
+ 
 function onMouseMove(evt) {
   var elem = document.elementFromPoint(evt.clientX, evt.clientY);
   if (elem != lastElem) {
-    var elemStyle = getStyles(elem, ['border', 'cursor']);
-    setStyles(elem, {'border': '1px solid #f00', 'cursor': 'pointer'});
-    if (lastElem) {
-      setStyles(lastElem, lastElemStyle);
-    }
-    lastElem = elem;
-    lastElemStyle = elemStyle;
+    window.setTimeout(function(){
+      resetOldStyles();
+      saveStyles(elem, ['-webkit-box-shadow', 'cursor', 'border']);
+      setStyles(elem, {
+          '-webkit-box-shadow': '0 2px 6px #f66', 
+          'cursor': 'pointer',
+          'border': '2px solid #f00'
+      });
+    }, 100);
   }
 };
 
