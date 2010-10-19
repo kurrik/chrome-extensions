@@ -9,19 +9,15 @@
   </head>
   <body>
     <script>
-      function onPageAction(tab) {
-        chrome.tabs.executeScript(tab.id, {file:"inserttemplate.js"});
-      };
-      
       function onRequest(request, sender, callback) {
-        if (request.action == "display") {
-          chrome.pageAction.show(sender.tab.id);
+        if (request.get == "template") {
+          callback({ template: localStorage['template'] });
+        } else {
+          callback();
         }
-        callback();
       };
-      
+
       chrome.extension.onRequest.addListener(onRequest);
-      chrome.pageAction.onClicked.addListener(onPageAction);
     </script>
   </body>
 </html>

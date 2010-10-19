@@ -2,8 +2,7 @@
   "name" : "Add template data to calendar descriptions",
   "version" : "1.0.0",
   "description" : "Adds template data to calendar descriptions",
-  "background_page" : "background.html",
-  "permissions" : [ 
+  "permissions" : [
     "tabs",
     "http://www.google.com/calendar/*",
     "https://www.google.com/calendar/*"
@@ -11,6 +10,8 @@
   "page_action" : {
     "default_icon" : "sample-19.png"
   },
+  "options_page" : "options.html",
+  "background_page" : "background.html",
   "content_scripts" : [
     {
       "matches" : [
