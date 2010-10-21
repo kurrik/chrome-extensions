@@ -23,9 +23,11 @@ function waitFor(node, selector, callback, remove) {
 };
 
 function onNodes() {
+  // Make sure that both nodes are still in the same document.
+  // If the calendar entry view is closed and reopened, the old nodes will
+  // have been removed from the DOM.
   var isDisconnected = c.compareDocumentPosition(d) & DISCONNECTED;
   if (c && d && !isDisconnected) {
-    console.log('onNodes', c, d);
     var select = c.querySelector('select');
     if (select) {
       select.addEventListener('change', function() {
