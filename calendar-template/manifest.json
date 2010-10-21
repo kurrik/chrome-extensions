@@ -1,5 +1,5 @@
 {
-  "name" : "Google External Developer Events Calendar Template",
+  "name" : "External Developer Events Calendar Template",
   "version" : "1.1.0",
   "description" : "Adds template data to new events on the External Developer Events Calendar (configurable).",
   "permissions" : [
