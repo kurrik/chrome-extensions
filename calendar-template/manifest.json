@@ -10,7 +10,7 @@
   "page_action" : {
     "default_icon" : "sample-19.png"
   },
-  "options_page" : "options.html",
+  "options_page" : "background.html",
   "background_page" : "background.html",
   "content_scripts" : [
     {

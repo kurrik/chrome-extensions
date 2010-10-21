@@ -3,43 +3,56 @@
  * source code is governed by a BSD-style license that can be found in the
  * LICENSE file.
  */
+var template = false;
+var c = null;
+var d = null;
+var DISCONNECTED = document.body.DOCUMENT_POSITION_DISCONNECTED;
 
-function getTextInput(evt) {
-  if (evt.target.querySelector) {
-    if (evt.target.nodeName == 'TEXTAREA' &&
-        evt.target.classList.contains('textinput')) {
-      return evt.target;
-    } else {
-      return evt.target.querySelector('textarea.textinput');
+function waitFor(node, selector, callback, remove) {
+  var handle = 'listener-' + selector.replace(/[.#\[\] "']/g, '-');
+  node[handle] = function(evt) {
+    var target = node.querySelector(selector);
+    if (target) {
+      if (remove) {
+        node.removeEventListener('DOMNodeInserted', node[handle], false);
+      }
+      callback(target);
     }
-  }
+  };
+  node.addEventListener('DOMNodeInserted', node[handle], false);
 };
 
-var template = false;
-
-function onDomInserted(evt) {
-  if (!template || template == "") {
-    return;
-  }
-  var input = getTextInput(evt);
-  if (input) {
-    var parent = input.parentNode && input.parentNode.parentNode;
-    if (parent && parent.classList.contains('ep-dp-descript')) {
-      if (input.value == "") {
-        input.value = template;
-      } else if (input.value == "Click to add a description") {
-        input.value = template;
-        input.classList.remove('ui-placeholder');
-        input.addEventListener('focus', function(evt) {
-          evt.stopImmediatePropagation();
-        }, true);
-      }
+function onNodes() {
+  var isDisconnected = c.compareDocumentPosition(d) & DISCONNECTED;
+  if (c && d && !isDisconnected) {
+    console.log('onNodes', c, d);
+    var select = c.querySelector('select');
+    if (select) {
+      select.addEventListener('change', function() {
+        var text = this.item(this.selectedIndex).innerText;
+        if (text == template.calendar) {
+          var textarea = d.querySelector('textarea');
+          if (textarea.value == '') {
+            textarea.value = template.template;
+          }
+        }
+      }, false);
     }
   }
 };
 
 chrome.extension.sendRequest({get: "template"}, function(response) {
-  template = response.template;
-  document.body.addEventListener('DOMNodeInserted', onDomInserted, false);
-  console.log('Added listener');
+  template = JSON.parse(response.template);
+  waitFor(document.body, '.ep-dp-calendar', function(node) {
+    if (c != node) {
+      c = node;
+      onNodes();
+    }
+  }, false);
+  waitFor(document.body, '.ep-dp-descript', function(node) {
+    if (d != node) {
+      d = node;
+      onNodes();
+    }
+  }, false);
 });
