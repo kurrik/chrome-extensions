@@ -98,9 +98,9 @@ URL(s):
       function checkReset() {
         if (templateInput.value == defaultTemplate &&
             calendarInput.value == defaultCalendar) {
-          reset.classList.add('hidden');
+          reset.className = 'hidden';
         } else {
-          reset.classList.remove('hidden');
+          reset.className = '';
         }
       };
 
