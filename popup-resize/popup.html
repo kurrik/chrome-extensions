@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Popup view</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>I am a popup</h1>
+    <div id="blinky">
+      I should blink on and off.
+    </div>
+    <script>
+      function toggleBlink() {
+        document.getElementById('blinky').classList.toggle('hidden');
+        window.setTimeout(toggleBlink, 2000);
+      };
+      window.setTimeout(toggleBlink, 2000);
+    </script>
+  </body>
+</html>

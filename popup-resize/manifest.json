@@ -1,0 +1,13 @@
+{
+  "name" : "Popups - Resizing Example",
+  "version" : "1.0.0",
+  "description" : "Tests resizing a popup",
+  "permissions" : [],
+  "browser_action" : {
+    "default_icon" : "sample-128.png",
+    "default_popup" : "popup.html"
+  },
+  "icons" : {
+    "128" : "sample-128.png"
+  }
+}
