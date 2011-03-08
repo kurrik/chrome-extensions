@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      function callback() {
+      };
+
+      function onClicked(tab) {
+        //chrome.tabs.executeScript(tab.id, {'file': 'script.js'}, callback);
+        var details = {
+          'relativeTo' : document.getElementsByTagName('body')[0]
+        };
+        chrome.experimental.popup.show("popup.html", details, callback);
+      };
+      chrome.browserAction.onClicked.addListener(onClicked);
+    </script>
+  </body>
+</html>
