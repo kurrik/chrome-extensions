@@ -1,0 +1,20 @@
+{
+  "name": "Test Omnibox escaping",
+  "version": "1.0.0",
+  "description": "Test escaping Omnibox suggestions.",
+  "permissions": [
+  ],
+  "omnibox" : {
+    "keyword" : "omniboxtest"
+  },
+  "icons": {
+    "16" : "sample-16.png",
+    "48" : "sample-48.png",
+    "128" : "sample-128.png"
+  },
+  "background_page" : "background.html",
+  "browser_action":
+  {
+    "default_icon" : "sample-19.png"
+  }
+}

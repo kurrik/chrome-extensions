@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+      function escapeTags(txt) {
+        return txt.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      };
+
+      function onInputChanged(text, callback) {
+        description = 'This is code <b>containing</b> XML <u>tags</u>';
+        callback([{
+          'content' : 'http://code.google.com/chrome/extensions/omnibox.html',
+          'description' : escapeTags(description)
+        }]);
+      };
+
+      chrome.omnibox.onInputChanged.addListener(onInputChanged);
+    </script>
+  </body>
+</html>
