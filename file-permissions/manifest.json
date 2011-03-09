@@ -1,0 +1,14 @@
+{
+  "name" : "Check file:// permissions",
+  "version" : "1.0.0",
+  "permissions" : [
+    "<all_urls>"
+  ],
+  "icons" : {
+    "128" : "sample-128.png"
+  },
+  "content_scripts" : [{
+    "matches" : [ "file://*" ],
+    "js" : [ "contentscript.js" ]
+  }]
+}
