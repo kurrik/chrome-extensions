@@ -27,7 +27,11 @@ window.addEventListener('load', function() {
   var urls_dom = document.createElement('ul');
   urls_dom.style.cssText = [
     'margin: 4px 0 !important;',
-    'padding: 0 !important;'
+    'padding: 0 !important;',
+    'width: 98%;',
+    'word-wrap: break-word;',
+    'max-height: 200px;',
+    'overflow: auto;'
   ].join(' ');
   var title_dom = document.createElement('strong');
   title_dom.textContent = (count > 1) ?
@@ -47,6 +51,9 @@ window.addEventListener('load', function() {
     link_dom.setAttribute('href', url);
     link_dom.setAttribute('target', '_blank');
     link_dom.textContent = url;
+    link_dom.style.cssText = [
+        'color: #000 !important;'
+    ].join(' ');
     times_dom.textContent = (urls[url] > 1) ?
       ' (' + urls[url] + ' times)' :
       ' (once)';
@@ -55,9 +62,9 @@ window.addEventListener('load', function() {
     urls_dom.appendChild(url_dom);
   }
   wrap_dom.style.cssText = [
-    'background-color: #ffd700;',
+    'background-color: #ff7357;',
     'background-image: -webkit-repeating-linear-gradient(' +
-        '45deg, transparent, transparent 35px,' +
+        '-45deg, transparent, transparent 35px,' +
         'rgba(0,0,0,.1) 35px, rgba(0,0,0,.1) 70px);',
     'color: #000;',
     'padding: 10px;',
