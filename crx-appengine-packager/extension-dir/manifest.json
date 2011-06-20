@@ -1,0 +1,9 @@
+{
+  "name" : "Hello World",
+  "version" : "1.0.0",
+  "description" : "Says Hi",
+  "background_page" : "background.html",
+  "icons" : {
+    "128" : "sample-128.png"
+  }
+}

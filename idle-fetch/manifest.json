@@ -1,0 +1,14 @@
+{
+  "name": "Idle Poller",
+  "version": "1.0.0",
+  "description": "Changes network fetch period based on idle status.",
+  "permissions": [ 
+    "idle",
+    "http://news.google.com/*"
+  ],
+  "icons": {
+    "48" : "sample-48.png",
+    "128" : "sample-128.png"
+  },
+  "background_page" : "background.html"
+}
